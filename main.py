@@ -6,6 +6,7 @@ from os.path import exists
 import requests
 import importlib
 import time
+import copy
 
 YEAR = 2022
 
@@ -55,11 +56,12 @@ def run(day):
     print(f'======== DAY {day} ========')
     mod = importlib.import_module(f'days.day{day:02d}')
     p = mod.parse(input)
+    p2 = copy.deepcopy(p)
     start_time = time.time()
     print(f'Part 1: {mod.part_1(p)}')
     p1_time = time.time()
     print(f'Part 1 took {p1_time - start_time}s')
-    print(f'Part 2: {mod.part_2(p)}')
+    print(f'Part 2: {mod.part_2(p2)}')
     p2_time = time.time()
     print(f'Part 2 took {p2_time - p1_time}s')
   

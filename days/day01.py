@@ -1,12 +1,12 @@
 import utils
 
 def parse(input):
-  return input
+  groups = list(map(lambda xs: map(int, xs.split()), input.split('\n\n')))
+  return groups
 
 def part_1(input):
-  print('Part 1 not implemented yet')
-  return 0
+  return max(map(sum, input))
 
 def part_2(input):
-  print('Part 2 not implemented yet')
-  return 0
+  top = sorted(list(map(sum, input)), reverse=True)
+  return sum(top[0:3])
