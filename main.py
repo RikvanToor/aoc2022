@@ -48,7 +48,7 @@ def get_input(day):
 
 def run(day):
   input_file = f'inputs/day{day:02d}.txt'
-  if not exists('input_file'):
+  if not exists(input_file):
     get_input(day)
   with open(input_file) as f:
     input = f.read()
