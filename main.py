@@ -29,8 +29,11 @@ def parse_args():
       day = get_day()
       get_input(day)
     elif sys.argv[1] == 'run':
-      day = get_day()
-      run(day)
+      if sys.argv[2:3] == ['--all']:
+        run_all()
+      else:
+        day = get_day()
+        run(day)
   else:
     print('Add a command: get-input | run')
 
@@ -45,6 +48,10 @@ def get_input(day):
     print('Done')
   else:
     raise Exception('Add your AoC cookie to a file called .cookie')
+
+def run_all():
+  for i in range(25):
+    run(i + 1)
 
 def run(day):
   input_file = f'inputs/day{day:02d}.txt'
