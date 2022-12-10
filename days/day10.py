@@ -1,12 +1,32 @@
 import utils
 
 def parse(input):
-  return input
+  instructions = [l.split(' ') for l in input.rstrip().split('\n')]
+  cycles = []
+  for c in instructions:
+    match c:
+      case ['noop']:
+        cycles.append(0)
+      case ['addx', y]:
+        cycles.append(0)
+        cycles.append(int(y))
+  return cycles
 
 def part_1(input):
-  print('Part 1 not implemented yet')
-  return 0
+  result = 0
+  for i in range(19, len(input)+1, 40):
+    result += (1 + sum(input[0:i])) * (i + 1)
+  return result
 
 def part_2(input):
-  print('Part 2 not implemented yet')
-  return 0
+  lines = ''
+  for i in range(len(input)+1):
+    cur_x = i % 40
+    if cur_x == 0:
+      lines += '\n'
+    xval = 1 + sum(input[0:i])
+    if abs(xval - cur_x) <= 1:
+      lines += '█'
+    else:
+      lines += ' '
+  return lines
